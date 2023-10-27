@@ -1,62 +1,68 @@
 """
 Discription
-"""	
+"""
 from selenium.webdriver.common.by import By
+import pytest
+import selenium
+from selenium import webdriver
+from selenium.webdriver.common.selenium_manager import SeleniumManager
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
 
 
 def test_example(browser):
-	"""
-	Description
-	"""
-	browser.get("https://postcard.qa.studio/")
+    """
+    Description
+    """
+    # browser = webdriver.Chrome()
+    browser.get("https://postcard.qa.studio/")
 
-	browser.find_element(By.ID, value="send")
-	assert btn.text == "Отправить", ""
-
-
-def test_emptyBody(browser):
-	"""
-	DescriptionF
-	"""
-	browser.get("https://postcard.qa.studio/")
+    btn = browser.find_element(By.ID, value="send")
+    assert btn.text == "Отправить", "Wrong Text!!!"
+    # assert True, ""
 
 
-	lbl = browser.find_element(By.CSS_SELECTOR, 
-		value="div.email h2").get_attribute("class")
-	assert lbl == "requered", ""
+def test_empty_body(browser):
+    """
+    DescriptionF
+    """
+    # browser = webdriver.Chrome()
+    browser.get("https://postcard.qa.studio/")
 
-	
-	browser.find_element(By.ID, value="send").click()
+    lbl = browser.find_element(By.CSS_SELECTOR,
+                               value="div.email h2").get_attribute("class")
+    assert lbl == "requered", ""
+
+    browser.find_element(By.ID, value="send").click()
+
+    lbl = browser.find_element(By.CSS_SELECTOR,
+                               value="div.email h2").get_attribute("class")
+    assert lbl == "requered error", ""
 
 
-	lbl = browser.find_element(By.CSS_SELECTOR, 
-		value="div.email h2").get_attribute("class")
-	assert lbl == "requered error", ""
+@pytest.mark.parametrize("x", [1, 2])
+def test_sending(browser, x):
+    """
+    Description
+    """
+    # browser = webdriver.Chrome()
+    browser.get("https://postcard.qa.studio/")
 
+    ent_em = browser.find_element(By.ID, value="email")
+    ent_em.click()
+    ent_em.send_keys("nikolaenkoruslan011@gmail.com")
 
-@pytest.mark.parametrize("x", [(0), (1)])
+    ent_text = browser.find_element(By.ID, value="textarea")
+    ent_text.click()
+    ent_text.send_keys("Hello, World!!!")
 
-def test_Sending(browser, x):
-	"""
-	Description
-	"""
-	browser.get("https://postcard.qa.studio/")	
-	
+    chs_photo = browser.find_element(By.CSS_SELECTOR, value=f'#photoContainer>div:nth-child({x})')
+    chs_photo.click()
 
-	browser.find_element(By.ID, value="email").click().
-		send_keys("nikolaenkoruslan@mail.ru")
-	
-	browser.find_element(By.ID, value="textarea").click().
-		send_keys("Hello, World!!!")
+    browser.find_element(By.ID, value="send").click()
 
-	browser.find_element(By.CSS_SELECTOR0, value='[class*="photo-parent"]').
-		[x]click().
-			 send_keys("Hello, World!!!")	
+    a = browser.find_element(By.XPATH, value="//h3[contains(text(), 'успешно')]").text
+    assert a == "Открытка успешно отправлена!"
 
-	browser.find_element(By.ID, value="send").click()
-
-	a = browser.find_element(By.ID, value="modal").text
-	assert a == "открытка успешно отправлена!"
-
-	# Заглушка 
-	# assert True, ""
+# 	# Заглушка 
+# 	# assert True, ""

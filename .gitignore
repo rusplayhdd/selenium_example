@@ -1,1 +1,4 @@
 testVR/
+chromedriver-win64/
+.vscode/
+.pytest_cache/

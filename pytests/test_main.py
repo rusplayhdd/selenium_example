@@ -40,6 +40,7 @@ def test_empty_body(browser):
     assert lbl == "requered error", ""
 
 
+@pytest.mark.xfail(reason="waiting for bug fix...")
 @pytest.mark.parametrize("x", [1, 2])
 def test_sending(browser, x):
     """

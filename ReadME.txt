@@ -14,3 +14,9 @@
 	pip install selenium
  	pip install webdriver-manager
  	pip install allure-pytest
+
+5) For start the allure use:
+	pytest --alluredir <folder_name>
+   
+5.1) To open a dashboard:
+	npx allure-commandline serve <folder_name>

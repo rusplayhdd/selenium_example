@@ -24,7 +24,7 @@ def test_example(browser):
 
 def test_empty_body(browser):
     """
-    DescriptionF
+    Description
     """
     # browser = webdriver.Chrome()
     browser.get("https://postcard.qa.studio/")

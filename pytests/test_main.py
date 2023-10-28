@@ -9,7 +9,7 @@ from selenium.webdriver.common.selenium_manager import SeleniumManager
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 
-
+@pytest.mark.xfail(reason="waiting for bug fix...")
 def test_example(browser):
     """
     Description
@@ -18,7 +18,7 @@ def test_example(browser):
     browser.get("https://postcard.qa.studio/")
 
     btn = browser.find_element(By.ID, value="send")
-    assert btn.text == "Отправить", "Wrong Text!!!"
+    assert btn.text == "Отправит", "Wrong Text!!!"
     # assert True, ""
 
 

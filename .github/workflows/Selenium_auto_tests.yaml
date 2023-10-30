@@ -12,7 +12,7 @@
           path: ~/.npm
           key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: install an allure dashboard
-        run: npm install --save-dev allure-commandline
+        run: npm ci
       - name: install Python
         uses: actions/setup-python@v4.7.1
         with:

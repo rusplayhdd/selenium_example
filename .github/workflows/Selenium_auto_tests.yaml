@@ -20,7 +20,7 @@
           restore-keys: | 
             ${{ runner.os }}-chromium-
       - name: install Chromium
-        run: sudo apt-get install -y chromium-browser=118.0.5993.118
+        run: sudo apt-get install -y chromium-browser
 #        uses: browser-actions/setup-chrome@v1
 #        with:
 #          chrome-version: stable

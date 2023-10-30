@@ -12,7 +12,14 @@
           python-version: '3.12'
       - name: installing necessary pip's
         run: pip install pytest selenium webdriver-manager allure-pytest
-      - name: install Chrome
+      - name: Cache Chromium
+        uses: actions/cache@v3.3.2
+        with:
+          path: ~/.cache/chromium
+          key: ${{ runner.os }}-chromium-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: | 
+            ${{ runner.os }}-chromium-
+      - name: install Chromium
         run: sudo apt-get install -y chromium-browser=118.0.5993.118
 #        uses: browser-actions/setup-chrome@v1
 #        with:
@@ -29,6 +36,8 @@
 #        run: python --version
 #      - name:
 #      - name:
+
+
 
 
 

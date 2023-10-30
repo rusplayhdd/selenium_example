@@ -17,8 +17,8 @@
         with:
           path: ~/.cache/chromium
           key: ${{ runner.os }}-chromium-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: | 
-            ${{ runner.os }}-chromium-
+#          restore-keys: |
+#            ${{ runner.os }}-chromium-
       - name: install Chromium
         run: sudo apt-get install -y chromium-browser
 #        uses: browser-actions/setup-chrome@v1

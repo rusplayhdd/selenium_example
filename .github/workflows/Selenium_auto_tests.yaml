@@ -13,9 +13,10 @@
       - name: installing necessary pip's
         run: pip install pytest selenium webdriver-manager allure-pytest
       - name: install Chrome
-        run: npm install chrome -g
-#        uses: browser-actions/setup-chrome@v1.2.3
+        uses: browser-actions/setup-chrome@v1.2.3
       - run: chrome --version
+      - name: Run tests
+        run: pytest
 
 
 

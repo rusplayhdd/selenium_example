@@ -1,7 +1,7 @@
   name: Selenium_RUN
   on: [push, workflow_dispatch]
   jobs:
-    testing_he_website:
+    testing_the_website:
       runs-on: ubuntu-latest
       steps:
       - name: Get the repository code
@@ -12,10 +12,16 @@
           python-version: '3.12'
       - name: installing necessary pip's
         run: pip install pytest selenium webdriver-manager allure-pytest
-      - name: What installed
-        run: pip list
-      - name: py version
-        run: python --version
+      - name: install Chrome
+        uses: browser-actions/setup-chrome@v1.2.3
+      - run: chrome --version
+
+
+
+#      - name: What installed
+#        run: pip list
+#      - name: py version
+#        run: python --version
 #      - name:
 #      - name:
 

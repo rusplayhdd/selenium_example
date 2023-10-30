@@ -18,7 +18,8 @@
         with:
           python-version: '3.12'
           cache: 'pip' # caching pip dependencies
-      - run: pip install -r requirements.txt
+      - name: installing all the necessary pip's
+        run: pip install -r requirements.txt
       - name: set up the Chrome
         uses: browser-actions/setup-chrome@v1
         with:

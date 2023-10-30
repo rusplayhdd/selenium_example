@@ -6,15 +6,25 @@
       steps:
       - name: Get the repository code
         uses: actions/checkout@v4.1.1
+      - name: Caching node deps
+        uses: actions/cache@v3.3.2
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: install an allure dashboard
+        run: npm install --save-dev allure-commandline
       - name: install Python
         uses: actions/setup-python@v4.7.1
         with:
           python-version: '3.12'
           cache: 'pip' # caching pip dependencies
       - run: pip install -r requirements.txt
-      - uses: browser-actions/setup-chrome@v1
+      - name: set up the Chrome
+        uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: stable
         id: setup-chrome
       - name: Run tests
-        run: pytest
+        run: pytest --alluredir ./dashboard/
+      - name: deploying a tests result
+        run: npx allure-commandline serve ./dashboard/

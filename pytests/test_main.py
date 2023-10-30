@@ -9,6 +9,7 @@ from selenium.webdriver.common.selenium_manager import SeleniumManager
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 
+
 @pytest.mark.xfail(reason="waiting for bug fix...")
 def test_example(browser):
     """

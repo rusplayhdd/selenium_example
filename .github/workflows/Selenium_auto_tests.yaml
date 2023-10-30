@@ -12,12 +12,8 @@
           python-version: '3.12'
       - name: installing necessary pip's
         run: pip install pytest selenium webdriver-manager allure-pytest
-      - name: install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
       - name: install chrome
-        run: npm install --save chromium
+        run: sudo apt-get install google-chrome-stable
       - name: Run tests
         run: pytest
 

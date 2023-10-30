@@ -26,5 +26,3 @@
         id: setup-chrome
       - name: Run tests
         run: pytest --alluredir ./dashboard/
-      - name: deploying a tests result
-        run: npx allure-commandline serve ./dashboard/

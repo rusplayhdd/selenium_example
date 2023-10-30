@@ -12,8 +12,11 @@
           python-version: '3.12'
       - name: installing necessary pip's
         run: pip install pytest selenium webdriver-manager allure-pytest
-      - name: install chrome
-        run: sudo apt-get install -y google-chrome-stable
+      - name: installing chrome...
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+        id: setup-chrome
       - name: Run tests
         run: pytest
 

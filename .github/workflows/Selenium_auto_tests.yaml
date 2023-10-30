@@ -9,7 +9,7 @@
       - name: install Python
         uses: actions/setup-python@v4.7.1
         with:
-          python-version: '3.10'
+          python-version: '3.12'
       - name: installing necessary pip's
         run: pip install pytest selenium webdriver-manager allure-pytest
       - name: What installed

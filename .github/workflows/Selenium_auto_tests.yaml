@@ -12,10 +12,11 @@
           python-version: '3.12'
       - name: installing necessary pip's
         run: pip install pytest selenium webdriver-manager allure-pytest
-      - name: install Chrome
+      - name: install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: install chrome
         run: npm install --save chromium
       - name: Run tests
         run: pytest
@@ -28,12 +29,3 @@
 #        run: python --version
 #      - name:
 #      - name:
-
-
-
-
-
-
-
-
-

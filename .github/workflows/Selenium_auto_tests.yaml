@@ -1,0 +1,26 @@
+  name: Selenium_RUN
+  on: [push, workflow_dispatch]
+  jobs:
+    testing_he_website:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Get the repository code
+        uses: actions/checkout@v4.1.1
+      - name: install Python
+        uses: actions/setup-python@v4.7.1
+        with:
+          python-version: '3.10'
+      - name: installing necessary pip's
+        run: pip install pytest selenium webdriver-manager allure-pytest
+      - name: What installed
+        run: pip list
+#      - name:
+#      - name:
+#      - name:
+
+
+
+
+
+
+

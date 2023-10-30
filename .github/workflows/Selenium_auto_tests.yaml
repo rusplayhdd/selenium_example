@@ -13,7 +13,7 @@
       - name: installing necessary pip's
         run: pip install pytest selenium webdriver-manager allure-pytest
       - name: What installed
-        run: pip list
+        run: pip list py --version
 #      - name:
 #      - name:
 #      - name:

@@ -15,7 +15,7 @@
       - name: What installed
         run: pip list
       - name: py version
-        run: py --version
+        run: python --version
 #      - name:
 #      - name:
 

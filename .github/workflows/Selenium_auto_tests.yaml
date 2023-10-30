@@ -10,12 +10,7 @@
         uses: actions/setup-python@v4.7.1
         with:
           python-version: '3.12'
-      - name: installing necessary pip's...
-        run: pip install pytest selenium webdriver-manager allure-pytest
-#      - name: installing chrome...
-#        uses: browser-actions/setup-chrome@v1
-#        with:
-#          chrome-version: stable
-#        id: setup-chrome
+          cache: 'pip' # caching pip dependencies
+      - run: pip install -r requirements.txt
       - name: Run tests
         run: pytest

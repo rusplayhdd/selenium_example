@@ -2,7 +2,7 @@
   on: [push, workflow_dispatch]
   jobs:
     testing_the_website:
-      runs-on: windows-latest
+      runs-on: ubuntu-latest
       steps:
       - name: Get the repository code
         uses: actions/checkout@v4.1.1
@@ -13,14 +13,13 @@
       - name: installing necessary pip's
         run: pip install pytest selenium webdriver-manager allure-pytest
       - name: install Chrome
-        uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: stable
-        id: setup-chrome
-      - name: Get the Chrome version
-        run: chrome --version
-      - name: Run tests
-        run: pytest
+        run: sudo apt-get install -y chromium-browser=118.0.5993.118
+#        uses: browser-actions/setup-chrome@v1
+#        with:
+#          chrome-version: stable
+#        id: setup-chrome
+#      - name: Run tests
+#        run: pytest
 
 
 

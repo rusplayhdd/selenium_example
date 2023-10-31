@@ -7,9 +7,6 @@
       - name: Get the repository code
         uses: actions/checkout@v4.1.1
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4.0.0
-
       - name: Cache dependencies
         uses: actions/cache@v3.3.2
         with:

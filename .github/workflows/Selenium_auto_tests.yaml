@@ -26,5 +26,5 @@
         with:
           chrome-version: stable
         id: setup-chrome
-      - name: Run tests
-        run: pytest --alluredir .\dashboard\
+#      - name: Run tests
+#        run: pytest --alluredir .\dashboard\

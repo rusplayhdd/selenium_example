@@ -7,10 +7,10 @@
       - name: Get the repository code
         uses: actions/checkout@v4.1.1
 
-#      - name: Get npm cache dir
-#        id: npm-cache-dir
-#        shell: pwsh
-#        run: echo "dir=$(npm config get cache)" >> ${env:GITHUB_OUTPUT}
+      - name: Get npm cache dir
+        id: npm-cache-dir
+        shell: bash
+        run: echo "dir=$(npm config get cache)" >> ${env:GITHUB_OUTPUT}
 
       - name: caching node deps
         uses: actions/cache@v3

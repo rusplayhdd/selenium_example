@@ -6,12 +6,12 @@
       steps:
       - name: Get the repository code
         uses: actions/checkout@v4.1.1
-      - name: Cache dependencies
-        uses: actions/cache@v3.3.2
-        with:
-          path: .\node_modules\
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
+#      - name: Cache dependencies
+#        uses: actions/cache@v3.3.2
+#        with:
+#          path: .\node_modules\
+#          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+#          restore-keys: |
             ${{ runner.os }}-npm-
       - name: install an allure dashboard
         run: npm ci

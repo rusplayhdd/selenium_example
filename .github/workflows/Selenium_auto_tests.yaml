@@ -9,7 +9,7 @@
       - name: Caching node deps
         uses: actions/cache@v3.3.2
         with:
-          path: ~\.npm
+          path: ~\\.npm
           key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: install an allure dashboard
         run: npm ci
@@ -26,4 +26,4 @@
           chrome-version: stable
         id: setup-chrome
       - name: Run tests
-        run: pytest --alluredir .\dashboard\
+        run: pytest --alluredir .\\dashboard\\

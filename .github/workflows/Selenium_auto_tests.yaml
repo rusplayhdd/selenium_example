@@ -2,7 +2,7 @@
   on: [push, workflow_dispatch]
   jobs:
     testing_the_website:
-      runs-on: ubuntu-latest
+      runs-on: windows-latest
       steps:
       - name: Get the repository code
         uses: actions/checkout@v4.1.1
@@ -10,7 +10,7 @@
       - name: Cache dependencies
         uses: actions/cache@v3.3.2
         with:
-          path: ~/.npm
+          path: ~\AppData\npm-cache
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
 
       - name: install an allure dashboard

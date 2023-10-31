@@ -23,6 +23,8 @@
       - name: install an allure dashboard
         run: npm ci
 
+      - run: chrome://version 
+
 #      - name: install Python
 #        uses: actions/setup-python@v4.7.1
 #        with:

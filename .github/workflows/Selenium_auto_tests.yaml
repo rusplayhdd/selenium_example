@@ -23,7 +23,7 @@
       - name: install an allure dashboard
         run: npm ci
 
-      - run: chrome://version 
+      - run: reg query "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Google Chrome"
 
 #      - name: install Python
 #        uses: actions/setup-python@v4.7.1

@@ -9,7 +9,7 @@
       - name: Cache dependencies
         uses: actions/cache@v3.3.2
         with:
-          path: ~\.npm
+          path: ~\node_modules
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
@@ -20,8 +20,7 @@
         with:
           python-version: '3.12'
           cache: 'pip' # caching pip dependencies
-      - name: installing all the necessary pip's
-        run: pip install -r requirements.txt
+      - run: pip install -r requirements.txt
       - name: set up the Chrome
         uses: browser-actions/setup-chrome@v1
         with:

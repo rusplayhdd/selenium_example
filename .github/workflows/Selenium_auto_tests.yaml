@@ -12,7 +12,7 @@
 #          path: .\node_modules\
 #          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
 #          restore-keys: |
-            ${{ runner.os }}-npm-
+#            ${{ runner.os }}-npm-
       - name: install an allure dashboard
         run: npm ci
       - name: install Python

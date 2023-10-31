@@ -9,7 +9,7 @@
       - name: Cache dependencies
         uses: actions/cache@v3.3.2
         with:
-          path: ~/.npm
+          path: ~\.npm
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
@@ -28,4 +28,4 @@
           chrome-version: stable
         id: setup-chrome
       - name: Run tests
-        run: pytest --alluredir .\\dashboard\\
+        run: pytest --alluredir .\dashboard\

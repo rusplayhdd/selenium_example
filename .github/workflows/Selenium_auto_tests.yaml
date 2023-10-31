@@ -9,22 +9,22 @@
       - name: Cache dependencies
         uses: actions/cache@v3.3.2
         with:
-          path: ~\node_modules
+          path: .\node_modules\
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
       - name: install an allure dashboard
         run: npm ci
-      - name: install Python
-        uses: actions/setup-python@v4.7.1
-        with:
-          python-version: '3.12'
-          cache: 'pip' # caching pip dependencies
-      - run: pip install -r requirements.txt
-      - name: set up the Chrome
-        uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: stable
-        id: setup-chrome
+#      - name: install Python
+#        uses: actions/setup-python@v4.7.1
+#        with:
+#          python-version: '3.12'
+#          cache: 'pip' # caching pip dependencies
+#      - run: pip install -r requirements.txt
+#      - name: set up the Chrome
+#        uses: browser-actions/setup-chrome@v1
+#        with:
+#          chrome-version: stable
+#        id: setup-chrome
 #      - name: Run tests
 #        run: pytest --alluredir .\dashboard\

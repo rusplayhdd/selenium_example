@@ -15,6 +15,9 @@
 
       - name: install an allure dashboard
         run: npm ci
+
+      - run:  npm --global cache verify
+
 #      - name: install Python
 #        uses: actions/setup-python@v4.7.1
 #        with:

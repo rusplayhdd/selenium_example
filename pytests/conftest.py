@@ -13,15 +13,15 @@ def browser():
     """
     basic fixture
     """
-    # chrome_options = Options()
+    chrome_options = Options()
     # chrome_options.add_argument("--no-sandbox")
     # chrome_options.add_argument("start-maximized")
     # chrome_options.add_argument("--disable-infobars")
     # chrome_options.add_argument("--disable-extensions")
-    # chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--headless")
 
     # s = Service(ChromeDriverManager().install())
-    driver = webdriver.ChromiumEdge()
+    driver = webdriver.ChromiumEdge(options=chrome_options)
 
     # it uses for hard shot down a browser by unforeseen mistakes
     yield driver

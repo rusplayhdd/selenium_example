@@ -13,7 +13,7 @@ def browser():
     """
     basic fixture
     """
-    chromium_options = webdriver.EdgeOptions()
+    chromium_options = Options()
     chromium_options.add_argument("--no-sandbox")
     # chromium_options.add_argument("start-maximized")
     chromium_options.add_argument("--disable-infobars")

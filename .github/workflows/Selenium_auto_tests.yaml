@@ -42,4 +42,4 @@
           edge-version: stable
 
       - name: Run tests
-        run: pytest --alluredir .\dashboard\
+        run: pytest --alluredir ./dashboard/

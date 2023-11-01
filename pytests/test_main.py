@@ -19,7 +19,7 @@ def test_example(browser):
     browser.get("https://postcard.qa.studio/")
 
     btn = browser.find_element(By.ID, value="send")
-    assert btn.text == "Отправить", "Wrong Text!!!"
+    assert btn.text == "Отправит", "Wrong Text!!!"
     # assert True, ""
 
 

@@ -21,7 +21,7 @@ def browser():
     # chromium_options.add_argument("--headless")
 
     s = Service(ChromeDriverManager().install())
-    driver = webdriver.Edge(options=chromium_options)
+    driver = webdriver.Edge(options=chromium_options, service=s)
 
     # it uses for hard shot down a browser by unforeseen mistakes
     yield driver

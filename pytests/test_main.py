@@ -3,11 +3,11 @@ Discription
 """
 from selenium.webdriver.common.by import By
 import pytest
-import selenium
-from selenium import webdriver
-from selenium.webdriver.common.selenium_manager import SeleniumManager
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
+# import selenium
+# from selenium import webdriver
+# from selenium.webdriver.common.selenium_manager import SeleniumManager
+# from webdriver_manager.chrome import ChromeDriverManager
+# from selenium.webdriver.chrome.options import Options
 
 
 # @pytest.mark.xfail(reason="waiting for bug fix...")
@@ -19,7 +19,7 @@ def test_example(browser):
     browser.get("https://postcard.qa.studio/")
 
     btn = browser.find_element(By.ID, value="send")
-    assert btn.text == "Отправит", "Wrong Text!!!"
+    assert btn.text == "Отправить", "Wrong Text!!!"
     # assert True, ""
 
 

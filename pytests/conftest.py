@@ -20,8 +20,8 @@ def browser():
     # chrome_options.add_argument("--disable-extensions")
     chrome_options.add_argument("--headless")
 
-    # s = Service(ChromeDriverManager().install())
-    driver = webdriver.ChromiumEdge(options=chrome_options)
+    s = Service(ChromeDriverManager().install())
+    driver = webdriver.ChromiumEdge(options=chrome_options, service=s)
 
     # it uses for hard shot down a browser by unforeseen mistakes
     yield driver

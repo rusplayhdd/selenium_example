@@ -5,7 +5,7 @@
       continue-on-error: true
       strategy:
         matrix:
-          runner: [ubuntu-latest, windows-latest]
+          os: [ubuntu-latest, windows-latest]
       runs-on: ${{ matrix.os }}
       steps:
 

@@ -2,7 +2,11 @@
   on: [push, workflow_dispatch]
   jobs:
     testing_the_website:
-      runs-on: windows-latest
+      continue-on-error: true
+      strategy:
+        matrix:
+          runner: [ubuntu-latest, windows-latest]
+      runs-on: ${{ matrix.os }}
       steps:
 
       - name: Get the repository code
@@ -32,11 +36,11 @@
 
       - run: pip install -r requirements.txt
 
-      - name: set up the Chrome
-        uses: browser-actions/setup-chrome@v1
+      - uses: browser-actions/setup-edge@v1.1.0
         with:
-          chrome-version: stable
-        id: setup-chrome
+          edge-version: stable
+      - name: Edge version
+        run: (Get-Item (Get-Command msedge).Source).VersionInfo.ProductVersio
 
       - name: Run tests
         run: pytest --alluredir .\dashboard\

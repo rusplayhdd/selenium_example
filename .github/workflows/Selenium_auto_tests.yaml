@@ -4,6 +4,7 @@
     testing_the_website:
       runs-on: windows-latest
       steps:
+
       - name: Get the repository code
         uses: actions/checkout@v4.1.1
 
@@ -12,7 +13,7 @@
         shell: bash
         run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v3.3.2
         id: npm-cache
         with:
          path: ${{ steps.npm-cache-dir.outputs.dir }}
@@ -23,18 +24,36 @@
       - name: install an allure dashboard
         run: npm ci
 
-      - run: reg query "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Google Chrome"
 
-#      - name: install Python
-#        uses: actions/setup-python@v4.7.1
-#        with:
-#          python-version: '3.12'
-#          cache: 'pip' # caching pip dependencies
-#      - run: pip install -r requirements.txt
-#      - name: set up the Chrome
-#        uses: browser-actions/setup-chrome@v1
-#        with:
-#          chrome-version: stable
-#        id: setup-chrome
-#      - name: Run tests
-#        run: pytest --alluredir .\dashboard\
+      - name: install Python
+        uses: actions/setup-python@v4.7.1
+        with:
+          python-version: '3.12'
+          cache: 'pip' # caching pip dependencies
+
+      - run: pip install -r requirements.txt
+
+      - name: set up the Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+        id: setup-chrome
+
+      - name: Run tests
+        run: pytest --alluredir .\dashboard\
+
+
+      - name: install Python
+        uses: actions/setup-python@v4.7.1
+        with:
+          python-version: '3.12'
+          cache: 'pip' # caching pip dependencies
+      - run: pip install -r requirements.txt
+      - name: set up the Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+        id: setup-chrome
+      - name: Run tests
+        run: pytest --alluredir .\dashboard\
+

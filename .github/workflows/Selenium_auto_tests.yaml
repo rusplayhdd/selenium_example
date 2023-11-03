@@ -37,7 +37,7 @@
       - run: pip install -r requirements.txt
 
       - name: Setup Firefox
-        uses: browser-actions/setup-firefox@1
+        uses: browser-actions/setup-firefox@v1.3.0
 
       - run: firefox --version
 

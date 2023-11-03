@@ -36,10 +36,14 @@
 
       - run: pip install -r requirements.txt
 
-      - name: set up the Edge
-        uses: browser-actions/setup-edge@v1.1.0
-        with:
-          edge-version: stable
+      - name: Setup Firefox
+        uses: browser-actions/setup-firefox@1.3.0
+        run: firefox --version
+
+#      - name: set up the Edge
+#        uses: browser-actions/setup-edge@v1.1.0
+#        with:
+#          edge-version: stable
 
       - name: Run tests
         run: pytest --alluredir ./dashboard/

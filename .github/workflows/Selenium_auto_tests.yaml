@@ -9,7 +9,7 @@
       runs-on: ${{ matrix.os }}
       steps:
 
-      - run: ${{ path.join(github.workspace, 'OIP.jpg') }}"
+      - run: echo "The file path is ${{ path.join(github.workspace, 'README.md') }}"
 
       - name: Get the repository code
         uses: actions/checkout@v4.1.1

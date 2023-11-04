@@ -9,7 +9,7 @@
       runs-on: ${{ matrix.os }}
       steps:
 
-      - run: $GITHUB_WORKSPACE/test_img/OIP.jpg
+      - run: ${{ path.join(github.workspace, '') }}"
 
       - name: Get the repository code
         uses: actions/checkout@v4.1.1

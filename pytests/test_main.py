@@ -1,10 +1,8 @@
 """
 Discription
 """
-import os
+import os, time, pytest, selenium
 from selenium.webdriver.common.by import By
-import pytest
-import selenium
 from selenium import webdriver
 from selenium.webdriver.common.selenium_manager import SeleniumManager
 from webdriver_manager.chrome import ChromeDriverManager
@@ -36,7 +34,7 @@ def test_empty_body(browser):
     assert lbl == "requered error", ""
 
     cstm_photo = browser.find_element(By.XPATH, value="//input[@type='file']")
-    cstm_photo.send_keys(f"{os.getcwd()}/OIP.jpg")
+    cstm_photo.send_keys(os.path.abspath("test_img/OIP.jpg"))
     photo = browser.find_element(By.CSS_SELECTOR, value=".photo-input__photo-plus").get_attribute("class")
     assert photo == "photo-input__photo photo-input__photo-plus toHide hidden", "wrong class value"
 

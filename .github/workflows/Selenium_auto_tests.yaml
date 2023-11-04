@@ -12,39 +12,37 @@
       - name: Get the repository code
         uses: actions/checkout@v4.1.1
 
-      - run: ${{ GITHUB_WORKSPACE }}
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        shell: bash
+        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
-#      - name: Get npm cache directory
-#        id: npm-cache-dir
-#        shell: bash
-#        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
-#
-#      - uses: actions/cache@v3.3.2
-#        id: npm-cache
-#        with:
-#         path: ${{ steps.npm-cache-dir.outputs.dir }}
-#         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-#         restore-keys: |
-#           ${{ runner.os }}-node-
-#
-#      - name: install an allure dashboard
-#        run: npm ci
-#
-#      - name: install Python
-#        uses: actions/setup-python@v4.7.1
-#        with:
-#          python-version: '3.12'
-#          cache: 'pip' # caching pip dependencies
-#
-#      - run: pip install -r requirements.txt
-#
+      - uses: actions/cache@v3.3.2
+        id: npm-cache
+        with:
+         path: ${{ steps.npm-cache-dir.outputs.dir }}
+         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+         restore-keys: |
+           ${{ runner.os }}-node-
+
+      - name: install an allure dashboard
+        run: npm ci
+
+      - name: install Python
+        uses: actions/setup-python@v4.7.1
+        with:
+          python-version: '3.12'
+          cache: 'pip' # caching pip dependencies
+
+      - run: pip install -r requirements.txt
+
 #      - name: Setup Firefox
 #        uses: browser-actions/setup-firefox@v1.3.0
-#
-##      - name: set up the Edge
-##        uses: browser-actions/setup-edge@v1.1.0
-##        with:
-##          edge-version: stable
-#
-#      - name: Run tests
-#        run: pytest --alluredir ./dashboard/
+
+      - name: set up the Edge
+        uses: browser-actions/setup-edge@v1.1.0
+        with:
+          edge-version: stable
+
+      - name: Run tests
+        run: pytest --alluredir ./dashboard/

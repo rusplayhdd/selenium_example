@@ -9,10 +9,10 @@
       runs-on: ${{ matrix.os }}
       steps:
 
-      - run: echo "The file path is ${{ path.join(github.workspace, 'README.md') }}"
-
       - name: Get the repository code
         uses: actions/checkout@v4.1.1
+
+      - run: echo "The file path is ${{ path.join(github.workspace, 'README.md') }}"
 
       - name: Get npm cache directory
         id: npm-cache-dir

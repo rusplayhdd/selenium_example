@@ -4,12 +4,15 @@ fixture by rusplay 2023 (c)
 import pytest
 from selenium import webdriver
 
+global chrome_options
+
 
 @pytest.fixture(scope="session")
 def browser():
     """
     basic fixture
     """
+    global chrome_options
     yml_file = open(".github/workflows/Selenium_auto_tests.yaml")
 
     if "setup-edge@" in yml_file.read():
@@ -26,7 +29,7 @@ def browser():
     chrome_options.add_argument("--disable-extensions")
     chrome_options.add_argument("--headless")
 
-    # p = webdriver.FirefoxService(executable_path="/snap/bin/geckodriver")
+    p = webdriver.FirefoxService(executable_path="/snap/bin/geckodriver")
 
     # s = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(options=chrome_options)

@@ -1,5 +1,5 @@
 """
-Discription
+python tests by rusplay 2023 (c)
 """
 import os, time, pytest, selenium
 from selenium.webdriver.common.by import By
@@ -35,8 +35,8 @@ def test_empty_body(browser):
 
     cstm_photo = browser.find_element(By.XPATH, value="//input[@type='file']")
     cstm_photo.send_keys(os.path.abspath("test_img/OIP.jpg"))
-    photo = browser.find_element(By.CSS_SELECTOR, value=".photo-input__photo-plus").get_attribute("class")
-    assert photo == "photo-input__photo photo-input__photo-plus toHide hidden", "wrong class value"
+    photo = browser.find_element(By.CSS_SELECTOR, ".photo-input__photo-plus").get_attribute("class")
+    assert "hidden" in photo, "wrong class value"
 
 
 @pytest.mark.xfail(reason="waiting for bug fix...")

@@ -14,7 +14,7 @@ def browser():
 
     if "setup-edge@" in yml_file.read():
         chrome_options = webdriver.FirefoxOptions()
-    elif "setup-edge@" in yml_file.read():
+    elif "setup-firefox@" in yml_file.read():
         chrome_options = webdriver.EdgeOptions()
     else:
         print("Browser setup ERROR in yml!!!!!!!!!!!")

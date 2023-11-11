@@ -1,23 +1,19 @@
   name: Selenium_RUN
   on: [push, workflow_dispatch]
   jobs:
-    testing_on_the_chromium:
+    testing_on_the_Chromium:
       continue-on-error: true
       strategy:
         matrix:
           os: [windows-latest, ubuntu-latest]
-#          web: [browser-actions/setup-firefox@v1.3.0, browser-actions/setup-edge@v1.1.0]
       runs-on: ${{ matrix.os }}
       steps:
-
       - name: Get the repository code
         uses: actions/checkout@v4.1.1
-
       - name: Get npm cache directory
         id: npm-cache-dir
         shell: bash
         run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
-
       - uses: actions/cache@v3.3.2
         id: npm-cache
         with:
@@ -25,20 +21,48 @@
          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
          restore-keys: |
            ${{ runner.os }}-node-
-
       - name: install an allure dashboard
         run: npm ci
-
       - name: install Python
         uses: actions/setup-python@v4.7.1
         with:
           python-version: '3.12'
           cache: 'pip' # caching pip dependencies
-
       - run: pip install -r requirements.txt
-
       - name: setup WebBrowser
         uses: browser-actions/setup-edge@v1.1.0
+      - name: Run tests
+        run: pytest --alluredir ./dashboard/
 
+    testing_on_the_Quantum:
+      continue-on-error: true
+      strategy:
+        matrix:
+          os: [windows-latest, ubuntu-latest]
+      runs-on: ${{ matrix.os }}
+      steps:
+      - name: Get the repository code
+        uses: actions/checkout@v4.1.1
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        shell: bash
+        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+      - uses: actions/cache@v3.3.2
+        id: npm-cache
+        with:
+         path: ${{ steps.npm-cache-dir.outputs.dir }}
+         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+         restore-keys: |
+           ${{ runner.os }}-node-
+      - name: install an allure dashboard
+        run: npm ci
+      - name: install Python
+        uses: actions/setup-python@v4.7.1
+        with:
+          python-version: '3.12'
+          cache: 'pip' # caching pip dependencies
+      - run: pip install -r requirements.txt
+      - name: setup WebBrowser
+        uses: browser-actions/setup-firefox@v1.3.0
       - name: Run tests
         run: pytest --alluredir ./dashboard/

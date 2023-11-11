@@ -38,7 +38,7 @@
       - run: pip install -r requirements.txt
 
       - name: setup WebBrowser
-        uses: ${{ matrix.web}}
+        uses: ${{ matrix.web }}
 
       - name: Run tests
         run: pytest --alluredir ./dashboard/

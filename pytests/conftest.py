@@ -1,5 +1,5 @@
 """
-fixture
+fixture by rusplay 2023 (c)
 """
 import pytest
 from selenium import webdriver
@@ -10,7 +10,16 @@ def browser():
     """
     basic fixture
     """
-    chrome_options = webdriver.FirefoxOptions()
+    yml_file = open(".github/workflows/Selenium_auto_tests.yaml")
+
+    if "setup Firefox" in yml_file.read():
+        chrome_options = webdriver.FirefoxOptions()
+    elif "setup setup Edge" in yml_file.read():
+        chrome_options = webdriver.EdgeOptions()
+    else:
+        print("Browser setup ERROR in yml!!!!!!!!!!!")
+    yml_file.close()
+
     chrome_options.add_argument("--no-sandbox")
     # chrome_options.add_argument("start-maximized")
     chrome_options.add_argument("--disable-infobars")
@@ -18,12 +27,12 @@ def browser():
     chrome_options.add_argument("--headless")
 
     # p = webdriver.FirefoxService(executable_path="/snap/bin/geckodriver")
-   
+
     # s = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(options=chrome_options)
-    driver.set_window_size(800, 700)
+    driver.set_window_size(670, 745)
 
-    # it uses for hard shot down a browser by unforeseen mistakes
+    # it uses for hard shutdown a browser by unforeseen mistakes
     yield driver
     driver.close()
     driver.quit()

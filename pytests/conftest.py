@@ -29,7 +29,7 @@ def browser():
     chrome_options.add_argument("--disable-extensions")
     chrome_options.add_argument("--headless")
 
-    p = webdriver.FirefoxService(executable_path="/snap/bin/geckodriver")
+    # p = webdriver.FirefoxService(executable_path="/snap/bin/geckodriver")
 
     # s = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(options=chrome_options)

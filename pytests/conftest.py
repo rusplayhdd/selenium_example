@@ -20,7 +20,7 @@ def browser():
     # s = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(options=chrome_options)
     driver.set_window_size(780, 710)
-
+    
     # it uses for hard shot down a browser by unforeseen mistakes
     yield driver
     driver.close()

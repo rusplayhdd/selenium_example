@@ -16,7 +16,7 @@ def test_example(browser):
     """
     browser.get("https://postcard.qa.studio/")
 
-    btn = browser.find_element(By.ID, value="send")
+    btn = browser.find_element(By.ID, "send")
     assert btn.text == "Отправить", "Wrong Text!!!"
     # assert True, ""
 
@@ -27,13 +27,13 @@ def test_empty_body(browser):
     """
     browser.get("https://postcard.qa.studio/")
 
-    lbl = browser.find_element(By.CSS_SELECTOR, value="div.email h2").get_attribute("class")
+    lbl = browser.find_element(By.CSS_SELECTOR, "div.email h2").get_attribute("class")
     assert lbl == "requered", ""
-    browser.find_element(By.ID, value="send").click()
-    lbl = browser.find_element(By.CSS_SELECTOR, value="div.email h2").get_attribute("class")
+    browser.find_element(By.ID, "send").click()
+    lbl = browser.find_element(By.CSS_SELECTOR, "div.email h2").get_attribute("class")
     assert lbl == "requered error", ""
 
-    cstm_photo = browser.find_element(By.XPATH, value="//input[@type='file']")
+    cstm_photo = browser.find_element(By.XPATH, "//input[@type='file']")
     cstm_photo.send_keys(os.path.abspath("test_img/OIP.jpg"))
     photo = browser.find_element(By.CSS_SELECTOR, ".photo-input__photo-plus").get_attribute("class")
     assert "hidden" in photo, "wrong class value"
@@ -48,20 +48,20 @@ def test_sending(browser, x):
     # browser = webdriver.Chrome()
     browser.get("https://postcard.qa.studio/")
 
-    ent_em = browser.find_element(By.ID, value="email")
+    ent_em = browser.find_element(By.ID, "email")
     ent_em.click()
     ent_em.send_keys("nikolaenkoruslan011@gmail.com")
 
-    ent_text = browser.find_element(By.ID, value="textarea")
+    ent_text = browser.find_element(By.ID, "textarea")
     ent_text.click()
     ent_text.send_keys("Hello, World!!!")
 
-    chs_photo = browser.find_element(By.CSS_SELECTOR, value=f'#photoContainer>div:nth-child({x})')
+    chs_photo = browser.find_element(By.CSS_SELECTOR, f'#photoContainer>div:nth-child({x})')
     chs_photo.click()
 
-    browser.find_element(By.ID, value="send").click()
+    browser.find_element(By.ID, "send").click()
 
-    a = browser.find_element(By.XPATH, value="//h3[contains(text(), 'успешно')]").text
+    a = browser.find_element(By.XPATH, "//h3[contains(text(), 'успешно')]").text
     assert a == "Открытка успешно отправлена!"
 
 # 	# Заглушка

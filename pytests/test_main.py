@@ -29,9 +29,25 @@ def test_empty_body(browser):
 
     lbl = browser.find_element(By.CSS_SELECTOR, "div.email h2").get_attribute("class")
     assert lbl == "requered", ""
+
+    lbl_photo = browser.find_element(By.CSS_SELECTOR, ".photo-input__header>h2:nth-child(1)")
+    get_class = lbl_photo.get_attribute("class")
+    assert get_class == "requered", ""
+
+    lbl_hide_pick = browser.find_element(By.CSS_SELECTOR, "h2.toHide").get_attribute("class")
+    assert "toHide" in lbl_hide_pick, "error toHide"
+
     browser.find_element(By.ID, "send").click()
+
     lbl = browser.find_element(By.CSS_SELECTOR, "div.email h2").get_attribute("class")
     assert lbl == "requered error", ""
+
+    lbl_photo = browser.find_element(By.CSS_SELECTOR, ".photo-input__header>h2:nth-child(1)")
+    get_class = lbl_photo.get_attribute("class")
+    assert get_class == "requered error", ""
+
+    lbl_hide_error = browser.find_element(By.CSS_SELECTOR, "h2.toHide").get_attribute("class")
+    assert "toHide error" in lbl_hide_error, ""
 
     cstm_photo = browser.find_element(By.XPATH, "//input[@type='file']")
     cstm_photo.send_keys(os.path.abspath("test_img/OIP.jpg"))
